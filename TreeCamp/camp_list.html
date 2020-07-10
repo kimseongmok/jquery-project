@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TreeCamp</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.slim.min.js"><\/script>')</script><script src="js/bootstrap.bundle.js"></script>
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a35a812003.js" crossorigin="anonymous"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 70px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 35%;
+      }
+      .fa:hover {
+          opacity: 0.7;
+      }
+
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      .fa-instagram {
+        background: #F70D6A;
+        color: white;
+      }
+
+			.jb-text {
+				text-align: center;
+			}
+
+      .Do li {
+        list-style-type:none;
+        float: left;
+        outline: 1px solid #00FFFF;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        padding: 5px;
+      }
+
+      .Do li div{
+        text-align: center;
+      }
+      h5{
+        margin-top: 1.25rem;
+      }
+      .title{
+        padding-top: 40px;
+      }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="Index.html"><img src="img/TreeCamp.png" width="200" height="40"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="camp_list.html">캠핑장</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="camp_type.html">캠핑유형</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tool_review.html">캠핑장비</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div>
+    <img src="img/Camping-Guide-for-Beginners.jpeg" width="100%" height="350px">
+  </div>
+
+
+
+<main role="main">
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+    <h1 class="title">캠핑장 목록</h1>
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_01.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>봉무공원야영장</h2>
+        <p>봉무공원 야영장은 대구광역시 동구에 위치했다. 대구광역시청을 기점으로 칠성지하차도와 복현오거리를 거치면 도착한다. 소요시간은 약 20분이다. 이 캠핑장은 팔공산 자락에 자리 잡은 봉무공원 내에 있다. </p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대구시 동구 팔공로 50길 66</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>053-662-2624</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-parachute-box fa-3x"></i>
+            <div>
+              <span>놀이터</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-store fa-3x"></i>
+            <div>
+              <span>마트</span>
+            </div>
+          </li>
+          <li>
+            <i class="fab fa-free-code-camp fa-3x"></i>
+            <div>
+              <span>모닥불</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/bongmu03.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_02.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>파계 오토캠핑장</h2>
+        <p>봉무공원 야영장은 대구광역시 동구에 위치했다. 대구광역시청을 기점으로 칠성지하차도와 복현오거리를 거치면 도착한다. 소요시간은 약 20분이다. 이 캠핑장은 팔공산 자락에 자리 잡은 봉무공원 내에 있다. </p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대대구광역시 동구 파계로 707-14</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>053-982-0005</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-bolt fa-3x"></i>
+            <div>
+              <span>전기</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-car fa-3x"></i>
+            <div>
+              <span>주차</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/pg06.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_03.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>비슬산숲속오토캠핑장</h2>
+        <p>비슬산 숲속 오토캠핑장은 대구광역시 달성군 유가면에 자리 잡고 있다. 대구광역시 달성군청을 기점으로 김흥2터널과 산성지하차도를 차례로 거치면 닿는다. 도착까지 걸리는 시간은 30여 분이다. 캠핑장은 물 맑고 공기 좋은 비슬산자연휴양림 내에 위치했다. </p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대구광역시 달성군 유가면 용리 산15</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>053-659-4400</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-caravan fa-3x"></i>
+            <div>
+              <span>카라반</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-parachute-box fa-3x"></i>
+            <div>
+              <span>놀이터</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-bolt fa-3x"></i>
+            <div>
+              <span>전기</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-car fa-3x"></i>
+            <div>
+              <span>주차</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-shower fa-3x"></i>
+            <div>
+              <span>샤워장</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/bm12.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_04.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>오투글램핑</h2>
+        <p>오투글램핑은 대구광역시 달성군 옥포면에 자리했다. 달성군청을 기점으로 용연사 쪽으로 방향을 잡고 약 20분가량 달리면 도착한다. 이 캠핑장은 가볍게 산행하며 아름다운 경치를 즐기기 좋은 비슬산 아래 위치했다. </p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대구광역시 달성군 옥포면 김흥리 952-1</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>053-616-1844</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-swimming-pool fa-3x"></i>
+            <div>
+              <span>물놀이</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-wifi fa-3x"></i>
+            <div>
+              <span>와이파이</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-bolt fa-3x"></i>
+            <div>
+              <span>전기</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-car fa-3x"></i>
+            <div>
+              <span>주차</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-shower fa-3x"></i>
+            <div>
+              <span>샤워장</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-store fa-3x"></i>
+            <div>
+              <span>마트</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/o204.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_05.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>진밭골 야영장</h2>
+        <p>개발제한구역 환경·문화사업에 공모·선정되어 조성한 진밭골 야영장은 도심에서 접근성이 우수한 도심 야영장으로, 약 4,900㎡ 규모로 카라반, 오토캠핑장, 일반캠핑장(야영데크)을 야영 취향에 맞춰 즐길 수 있으며, 취사장, 샤워장, 화장실 등 각종 편의시설 또한 갖추어져 있어 편리하게 사용할 수 있습니다.</p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대구 수성구 진밭길 112 (범물동)</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>053-666-3477</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-bolt fa-3x"></i>
+            <div>
+              <span>전기</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-store fa-3x"></i>
+            <div>
+              <span>마트</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/jin05.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_06.html'" style="cursor:pointer;">
+      <div class="col-md-8">
+        <h2>달서별빛캠프 캠핑장</h2>
+        <p>달서별빛캠프 캠핑장은 대구시 달서구에 자리 잡고 있다. 대구광역시청을 기점으로 9㎞가량 떨어졌다. 자동차에 몸을 싣고 동덕로, 신천대로, 앞산순환로를 차례로 달리면 닿는다. 도착까지 걸리는 시간은 15분 안팎이다. 이곳은 나지막한 산 중턱에 위치했다.</p>
+        <i class="fas fa-map-marked-alt fa-lg"></i>
+        <span>대구 달서구 앞산순환로 248 (송현동)</span>
+        <i class="fas fa-phone-square-alt fa-lg"></i>
+        <span>054-667-3191</span>
+        <ul class="Do">
+          <h5>이용 가능 시설</h5>
+          <li>
+            <i class="fas fa-parachute-box fa-3x"></i>
+            <div>
+              <span>놀이터</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-store fa-3x"></i>
+            <div>
+              <span>마트</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-bolt fa-3x"></i>
+            <div>
+              <span>전기</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-swimming-pool fa-3x"></i>
+            <div>
+              <span>물놀이</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-wifi fa-3x"></i>
+            <div>
+              <span>와이파이</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-car fa-3x"></i>
+            <div>
+              <span>주차</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-shower fa-3x"></i>
+            <div>
+              <span>샤워장</span>
+            </div>
+          </li>
+          <li>
+            <i class="fab fa-free-code-camp fa-3x"></i>
+            <div>
+              <span>모닥불</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/dr12.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div class="col-md-6" style="float: left;">
+      <p>문의 사항 : sayboy1018@naver.com OR facebook, instagram<br>(평일 9:00 ~ 18:00)</p>
+    </div>
+
+    <div class="col-md-6" style="float: right; text-align : right;" >
+      <a href="https://www.facebook.com/profile.php?id=100004561955091" class="col-sm-3 fa fa-facebook"></a>
+      <a href="https://www.instagram.com/sayboy1018/" class="col-sm-3 fa fa-instagram"></a>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

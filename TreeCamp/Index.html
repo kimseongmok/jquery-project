@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TreeCamp</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.slim.min.js"><\/script>')</script><script src="js/bootstrap.bundle.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 70px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 35%;
+      }
+      .fa:hover {
+          opacity: 0.7;
+      }
+
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      .fa-instagram {
+        background: #F70D6A;
+        color: white;
+      }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="Index.html"><img src="img/TreeCamp.png" width="200" height="40"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="camp_list.html">캠핑장</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="camp_type.html">캠핑유형</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tool_review.html">캠핑장비</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style="background-image: url('img/Camping-Guide-for-Beginners.jpeg'); background-size: cover;"></svg>
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>대구에 있는 여러 캠핑장을 둘러보세요.</h1>
+            <p>대구에 있는 여러 캠핑장을 직접 보십쇼. 여러분들이 몰랐던 가까운 장소의 좋은 캠핑 스폿을 찾으실 수 있습니다.</p>
+            <p><a class="btn btn-lg btn-primary" href="camp_list.html" role="button">Go!Go!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style="background-image: url('img/Tool.webp'); background-size: cover;"></svg>
+        <div class="container">
+          <div class="carousel-caption" style="color: #F99420;">
+            <h1>캠핑의 장비들을 알아보세요.</h1>
+            <p>캠핑할 때 빠질 수 없는 많은 장비들. 어떤것이 필요한지 필요없는지 그리고 용도는 무엇인지 알고 가면 캠핑의 즐거움은 두배 더!</p>
+            <p><a class="btn btn-lg btn-primary" href="tool_review.html" role="button">Tool more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style="background-image: url('img/camp.jpg'); background-size: cover;"></svg>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>캠핑의 유형들을 아시나요?</h1>
+            <p>우리가 흔히 제일 많이 생각하는 야영장과 장비 필요없이 야영과 비슷한 느낌을 주는 글램핑부터 캠핑카까지 알아보세요.</p>
+            <p><a class="btn btn-lg btn-primary" href="camp_type.html" role="button">Click!</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_01.html'" style="cursor:pointer;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">봉무공원야영장<br></h2>
+        <p class="lead">봉무공원 야영장은 대구광역시 동구에 위치했다. 대구광역시청을 기점으로 칠성지하차도와 복현오거리를 거치면 도착한다. 소요시간은 약 20분이다. 이 캠핑장은 팔공산 자락에 자리 잡은 봉무공원 내에 있다. </p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/bongmu03.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_02.html'" style="cursor:pointer;">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">파계 오토캠핑장<br></h2>
+        <p class="lead">팔공산 파계지구 오토캠핑장은 대구광역시 동구에 위치했다. 대구광역시청을 기점으로 경대교와 백안삼거리를 거치면 닿는다. 도착까지 소요시간은 약 30분이다. 이곳은 울창한 숲과 계곡 덕분에 계절마다 아름다운 풍경을 뽐내는 팔공산에 조성됐다.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/pg06.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" OnClick="location.href ='camp_spot_06.html'" style="cursor:pointer;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">달서별빛캠프 캠핑장<br></h2>
+        <p class="lead">달서별빛캠프 캠핑장은 대구시 달서구에 자리 잡고 있다. 대구광역시청을 기점으로 9㎞가량 떨어졌다. 자동차에 몸을 싣고 동덕로, 신천대로, 앞산순환로를 차례로 달리면 닿는다. 도착까지 걸리는 시간은 15분 안팎이다. 이곳은 나지막한 산 중턱에 위치했다.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500" style="background-image: url('img/camp/bongmu03.jpg'); background-size: cover;"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">제작자</h2>
+        <h3 class="section-subheading text-muted">웹사이트를 제작한 제작자입니다.</h3><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <img class="mx-auto img-thumbnail" src="img/producer.jpg" width="300" height="401">
+        <h4>김성목(1605081)</h4>
+        <p class="text-muted">영남이공대학교 컴퓨터정보과</p>
+        <p class="text-muted">Email : sayboy1018@naver.com</p>
+        <p class="text-muted">Tel : 010-4108-8004</p>
+        <!-- Add font awesome icons -->
+        <a href="https://www.facebook.com/profile.php?id=100004561955091" class="col-sm-3 fa fa-facebook"></a>
+        <a href="https://www.instagram.com/sayboy1018/" class="col-sm-3 fa fa-instagram"></a>
+      </div>
+    </div>
+
+  </footer>
+</main>
+</body>
+</html>

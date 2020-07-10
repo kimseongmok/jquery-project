@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TreeCamp</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.slim.min.js"><\/script>')</script><script src="js/bootstrap.bundle.js"></script>
+    <script src="https://kit.fontawesome.com/a35a812003.js" crossorigin="anonymous"></script>
+
+
+
+    <!--이미지 jQuery-->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css' />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.masonry.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript">
+			$(window).load(function(){
+				var $iw_thumbs			= $('#iw_thumbs'),
+					$iw_ribbon			= $('#iw_ribbon'),
+					$iw_ribbon_close	= $iw_ribbon.children('span.iw_close'),
+					$iw_ribbon_zoom		= $iw_ribbon.children('span.iw_zoom');
+
+					ImageWall	= (function() {
+							// window width and height
+						var w_dim,
+						    // index of current image
+							current				= -1,
+							isRibbonShown		= false,
+							isFullMode			= false,
+							// ribbon / images animation settings
+							ribbonAnim			= {speed : 500, easing : 'easeOutExpo'},
+							imgAnim				= {speed : 400, easing : 'jswing'},
+							// init function : call masonry, calculate window dimentions, initialize some events
+							init				= function() {
+								$iw_thumbs.imagesLoaded(function(){
+									$iw_thumbs.masonry({
+										isAnimated	: true
+									});
+								});
+								getWindowsDim();
+								initEventsHandler();
+							},
+							// calculate window dimentions
+							getWindowsDim		= function() {
+								w_dim = {
+									width	: $(window).width(),
+									height	: $(window).height()
+								};
+							},
+							// initialize some events
+							initEventsHandler	= function() {
+
+								// click on a image
+								$iw_thumbs.delegate('li', 'click', function() {
+									if($iw_ribbon.is(':animated')) return false;
+
+									var $el = $(this);
+
+									if($el.data('ribbon')) {
+										showFullImage($el);
+									}
+									else if(!isRibbonShown) {
+										isRibbonShown = true;
+
+										$el.data('ribbon',true);
+
+										// set the current
+										current = $el.index();
+
+										showRibbon($el);
+									}
+								});
+
+								// click ribbon close
+								$iw_ribbon_close.bind('click', closeRibbon);
+
+								// on window resize we need to recalculate the window dimentions
+								$(window).bind('resize', function() {
+											getWindowsDim();
+											if($iw_ribbon.is(':animated'))
+												return false;
+											closeRibbon();
+										 })
+								         .bind('scroll', function() {
+											if($iw_ribbon.is(':animated'))
+												return false;
+											closeRibbon();
+										 });
+
+							},
+							showRibbon			= function($el) {
+								var	$img	= $el.children('img'),
+									$descrp	= $img.next();
+
+								// fadeOut all the other images
+								$iw_thumbs.children('li').not($el).animate({opacity : 0.2}, imgAnim.speed);
+
+								// increase the image z-index, and set the height to 100px (default height)
+								$img.css('z-index', 100)
+									.data('originalHeight',$img.height())
+									.stop()
+									.animate({
+										height 		: '100px'
+									}, imgAnim.speed, imgAnim.easing);
+
+								// the ribbon will animate from the left or right
+								// depending on the position of the image
+								var ribbonCssParam 		= {
+										top	: $el.offset().top - $(window).scrollTop() - 6 + 'px'
+									},
+									descriptionCssParam,
+									dir;
+
+								if( $el.offset().left < (w_dim.width / 2) ) {
+									dir = 'left';
+									ribbonCssParam.left 	= 0;
+									ribbonCssParam.right 	= 'auto';
+								}
+								else {
+									dir = 'right';
+									ribbonCssParam.right 	= 0;
+									ribbonCssParam.left 	= 'auto';
+								}
+
+								$iw_ribbon.css(ribbonCssParam)
+								          .show()
+										  .stop()
+										  .animate({width : '100%'}, ribbonAnim.speed, ribbonAnim.easing, function() {
+												switch(dir) {
+													case 'left' :
+														descriptionCssParam		= {
+															'left' 			: $img.outerWidth(true) + 'px',
+															'text-align' 	: 'left'
+														};
+														break;
+													case 'right' :
+														descriptionCssParam		= {
+															'left' 			: '-200px',
+															'text-align' 	: 'right'
+														};
+														break;
+												};
+												$descrp.css(descriptionCssParam).fadeIn();
+												// show close button and zoom
+												$iw_ribbon_close.show();
+												$iw_ribbon_zoom.show();
+										  });
+
+							},
+							// close the ribbon
+							// when in full mode slides in the middle of the page
+							// when not slides left
+							closeRibbon			= function() {
+								isRibbonShown 	= false
+
+								$iw_ribbon_close.hide();
+								$iw_ribbon_zoom.hide();
+
+								if(!isFullMode) {
+
+									// current wall image
+									var $el	 		= $iw_thumbs.children('li').eq(current);
+
+									resetWall($el);
+
+									// slide out ribbon
+									$iw_ribbon.stop()
+											  .animate({width : '0%'}, ribbonAnim.speed, ribbonAnim.easing);
+
+								}
+								else {
+									$iw_ribbon.stop().animate({
+										opacity		: 0.8,
+										height 		: '0px',
+										marginTop	: w_dim.height/2 + 'px' // half of window height
+									}, ribbonAnim.speed, function() {
+										$iw_ribbon.css({
+											'width'		: '0%',
+											'height'	: '126px',
+											'margin-top': '0px'
+										}).children('img').remove();
+									});
+
+									isFullMode	= false;
+								}
+							},
+							resetWall			= function($el) {
+								var $img		= $el.children('img'),
+									$descrp		= $img.next();
+
+								$el.data('ribbon',false);
+
+								// reset the image z-index and height
+								$img.css('z-index',1).stop().animate({
+									height 		: $img.data('originalHeight')
+								}, imgAnim.speed,imgAnim.easing);
+
+								// fadeOut the description
+								$descrp.fadeOut();
+
+								// fadeIn all the other images
+								$iw_thumbs.children('li').not($el).animate({opacity : 1}, imgAnim.speed);
+							},
+							showFullImage		= function($el) {
+								isFullMode	= true;
+
+								$iw_ribbon_close.hide();
+
+								var	$img	= $el.children('img'),
+									large	= $img.data('img'),
+
+									// add a loading image on top of the image
+									$loading = $('<span class="iw_loading"></span>');
+
+								$el.append($loading);
+
+								// preload large image
+								$('<img/>').load(function() {
+									var $largeImage	= $(this);
+
+									$loading.remove();
+
+									$iw_ribbon_zoom.hide();
+
+									resizeImage($largeImage);
+
+									// reset the current image in the wall
+									resetWall($el);
+
+									// animate ribbon in and out
+									$iw_ribbon.stop().animate({
+										opacity		: 1,
+										height 		: '0px',
+										marginTop	: '63px' // half of ribbons height
+									}, ribbonAnim.speed, function() {
+										// add the large image to the DOM
+										$iw_ribbon.prepend($largeImage);
+
+										$iw_ribbon_close.show();
+
+										$iw_ribbon.animate({
+											height 		: '100%',
+											marginTop	: '0px',
+											top			: '0px'
+										}, ribbonAnim.speed);
+									});
+								}).attr('src',large);
+
+							},
+							resizeImage			= function($image) {
+								var widthMargin		= 100,
+									heightMargin 	= 100,
+
+									windowH      	= w_dim.height - heightMargin,
+									windowW      	= w_dim.width - widthMargin,
+									theImage     	= new Image();
+
+								theImage.src     	= $image.attr("src");
+
+								var imgwidth     	= theImage.width,
+									imgheight    	= theImage.height;
+
+								if((imgwidth > windowW) || (imgheight > windowH)) {
+									if(imgwidth > imgheight) {
+										var newwidth 	= windowW,
+											ratio 		= imgwidth / windowW,
+											newheight 	= imgheight / ratio;
+
+										theImage.height = newheight;
+										theImage.width	= newwidth;
+
+										if(newheight > windowH) {
+											var newnewheight 	= windowH,
+												newratio 		= newheight/windowH,
+												newnewwidth 	= newwidth/newratio;
+
+											theImage.width 		= newnewwidth;
+											theImage.height		= newnewheight;
+										}
+									}
+									else {
+										var newheight 	= windowH,
+											ratio 		= imgheight / windowH,
+											newwidth 	= imgwidth / ratio;
+
+										theImage.height = newheight;
+										theImage.width	= newwidth;
+
+										if(newwidth > windowW) {
+											var newnewwidth 	= windowW,
+											    newratio 		= newwidth/windowW,
+												newnewheight 	= newheight/newratio;
+
+											theImage.height 	= newnewheight;
+											theImage.width		= newnewwidth;
+										}
+									}
+								}
+
+								$image.css({
+									'width'			: theImage.width + 'px',
+									'height'		: theImage.height + 'px',
+									'margin-left'	: -theImage.width / 2 + 'px',
+									'margin-top'	: -theImage.height / 2 + 'px'
+								});
+							};
+
+						return {init : init};
+					})();
+
+				ImageWall.init();
+			});
+		</script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 70px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 35%;
+      }
+      .fa:hover {
+          opacity: 0.7;
+      }
+
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      .fa-instagram {
+        background: #F70D6A;
+        color: white;
+      }
+
+			.jb-text {
+				text-align: center;
+			}
+      h5{
+        margin-top: 1.25rem;
+      }
+      .title{
+        padding-top: 40px;
+      }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="Index.html"><img src="img/TreeCamp.png" width="200" height="40"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="camp_list.html">캠핑장</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="camp_type.html">캠핑유형</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="tool_review.html">캠핑장비</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+<div>
+  <img src="img/Tool.webp" width="100%" height="100%">
+</div>
+
+<h2 class="title">캠핑 장비</h2>
+<h4>사진을 클릭하여 보세요!(열린 뒤 한번 더 사진을 누르면 크게 볼 수 있어요!)</h4>
+<div class="content">
+  <div class="iw_wrapper">
+    <ul class="iw_thumbs" id="iw_thumbs">
+      <li><img src="img/tool/tent.jpg" data-img="img/tool/tent.jpg" alt="Thumb1" />
+        <div>
+          <h2>텐트(Tent)</h2>
+          <p>야영지에서는 집과 같은 것이며 천으로 만들어 진다. 크기별로 다양한 텐트가 있으며, 주로 잠을 자는 용도의 작은 텐트와 거실이나 주방 공간이 있는 대형 텐트로 구분 할 수 있다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/tape.jpg" data-img="img/tool/tape.jpg" alt="Thumb2" />
+        <div>
+          <h2>타프(Tarp)</h2>
+          <p>야영지에서 지붕 역할을 하는 것을 타프라고 한다. 타프는 햇빛과 비 그리고 이슬을 막아주며, 설치 방법에 따라서 바람을 막아 주기도 한다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/peg.jpg" data-img="img/tool/peg.jpg" alt="Thumb3" />
+        <div>
+          <h2>펙(Peg)</h2>
+          <p>텐트와 타프를 지면에 고정하는 긴 못과 같은 것으로 텐트와 타프를 구입하면 대부분 구성품으로 동봉되어 있다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/lentern.jpg" data-img="img/tool/lentern.jpg" alt="Thumb8" />
+        <div>
+          <h2>랜턴(Lantern)</h2>
+          <p>깜깜한 야영지를 밝혀주며 사용 연료에 따라서 많은 종류가 있으며, 기본 장비에 속한다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/burner.jpg" data-img="img/tool/burner.jpg" alt="Thumb9" />
+        <div>
+          <h2>버너(Burner)</h2>
+          <p>음식을 조리하기 위한 도구이며 연료로 부탄가스가 가장 많이 사용되며, 휘발유와 석유를 사용하는 버너도 있다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/copel.jpg" data-img="img/tool/copel.jpg" alt="Thumb10" />
+        <div>
+          <h2>코펠</h2>
+          <p>밥이나 국을 끓일 때 사용하는 휴대성이 좋은 냄비이며, 가벼운 소재의 알루미늄이나 단단한 스테인리스 제품이 주를 이룬다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/sleeping_bag.jpg" data-img="img/tool/sleeping_bag.jpg" alt="Thumb6" />
+        <div>
+          <h2>침낭</h2>
+          <p>야영지에서 잠을 잘 때 체온을 유지해주는 이불 대용으로 자루 모양이며 한쪽 면에 지퍼가 있어 열거나 잠글 수 있도록 되어 있다.충전재 양에 따라서 계절별로 나뉜다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/table_chair.jpg" data-img="img/tool/table_chair.jpg" alt="Thumb7" />
+        <div>
+          <h2>테이블,의자</h2>
+          <p>휴대성이 좋고 무게가 가벼워서 캠핑에 적합한 테이블과 의자이며, 오토캠핑이 자리를 잡으면서 야외용 돗자리를 이용하는 좌식 스타일에서 테이블과 의자를 이용하는 입식 스타일로 바뀐 점을 들 수 있다.</p>
+        </div>
+      </li>
+      <li><img src="img/tool/brazier.jpg" data-img="img/tool/brazier.jpg" alt="Thumb8" />
+        <div>
+          <h2>화롯대</h2>
+          <p>야영지에서 캠프파이어를 즐길 수 있도록 장작불을 피울 수 있게 만든 접이식 화로이며, 남은 불씨에 바비큐를 음식을 끓여 먹기도 한다.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="iw_ribbon" class="iw_ribbon">
+    <span class="iw_close"></span>
+    <span class="iw_zoom">Click thumb to zoom</span>
+  </div>
+  <hr class="featurette-divider">
+</div>
+
+<!-- FOOTER -->
+<footer class="container">
+  <div class="col-md-6" style="float: left;">
+    <p>문의 사항 : sayboy1018@naver.com OR facebook, instagram<br>(평일 9:00 ~ 18:00)</p>
+  </div>
+
+  <div class="col-md-6 icon" style="float: right; text-align : right;" >
+    <a href="https://www.facebook.com/profile.php?id=100004561955091" class="col-sm-3 fa fa-facebook"></a>
+    <a href="https://www.instagram.com/sayboy1018/" class="col-sm-3 fa fa-instagram"></a>
+  </div>
+</footer>
+</body>
+</html>
